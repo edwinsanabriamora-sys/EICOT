@@ -450,6 +450,361 @@ body{
   mix-blend-mode:normal!important;
 }
 
+
+
+/* =========================================================
+   VISTA COMPUTADOR — AJUSTE EXCLUSIVO DE ESCRITORIO
+   La versión móvil permanece intacta (solo aplica desde 1024px)
+   ========================================================= */
+@media (min-width:1024px){
+  html,body{min-width:1024px;}
+  body{overflow-x:hidden;}
+
+  .page{
+    width:100%;
+    max-width:none;
+    min-height:100vh;
+    padding:28px clamp(28px,4vw,72px) 40px;
+    overflow:visible;
+  }
+
+  /* El grifo pasa a ser el gran fondo de toda la pantalla */
+  .page::after{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    left:0;
+    top:0;
+    transform:none;
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    opacity:.24;
+    filter:saturate(.72) brightness(.68);
+  }
+
+  .header{
+    width:min(1500px,100%);
+    margin:0 auto 18px;
+  }
+
+  .title{font-size:clamp(48px,4.5vw,76px);}
+  .subtitle{max-width:1100px;margin-bottom:16px;}
+  .progress-block{max-width:1200px;margin-bottom:14px;}
+
+  /* Los tres widgets se distribuyen horizontalmente */
+  .cards{
+    width:min(1750px,100%);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:22px;
+    align-items:stretch;
+  }
+
+  .card{
+    min-height:570px;
+    padding:28px 24px 26px;
+    border-radius:30px;
+    display:flex;
+    align-items:stretch;
+  }
+
+  /* Se elimina el grifo interno: ahora el fondo es único y de pantalla completa */
+  .card.eicoc::after{display:none!important;}
+
+  .card-grid{
+    width:100%;
+    grid-template-columns:1fr;
+    grid-template-rows:auto 1fr;
+    gap:12px;
+    align-items:start;
+    text-align:center;
+  }
+
+  .shield-wrap{
+    min-height:210px;
+    padding:0;
+  }
+
+  .shield{
+    width:min(220px,72%);
+    max-height:220px;
+    object-fit:contain;
+  }
+
+  .card-grid > div:last-child{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    min-width:0;
+  }
+
+  .acronym{
+    font-size:clamp(42px,3.7vw,62px);
+    letter-spacing:4px;
+    margin-top:2px;
+  }
+
+  .desc{
+    max-width:440px;
+    margin-top:12px;
+    font-size:clamp(12px,1.15vw,17px);
+    line-height:1.45;
+  }
+
+  .metric-title{
+    margin-top:22px;
+    font-size:clamp(12px,1.1vw,17px);
+  }
+
+  .divider{
+    width:100%;
+    max-width:380px;
+    margin:10px auto 14px;
+  }
+
+  .fraction{margin-top:8px;}
+  .big-number,.simple-number{font-size:clamp(64px,5vw,92px);}
+  .dual{width:100%;max-width:430px;margin-top:14px;}
+  .dual-value{font-size:clamp(50px,4vw,78px);}
+  .dual-label{font-size:clamp(9px,.9vw,13px);}
+
+  /* Mantiene la composición equilibrada en pantallas muy anchas */
+  @media (min-width:1500px){
+    .cards{gap:28px;}
+    .card{min-height:610px;padding:32px 30px 28px;}
+    .shield-wrap{min-height:235px;}
+    .shield{max-height:240px;width:min(235px,72%);}
+  }
+}
+
+
+/* ===== AJUSTE FINO EXCLUSIVO PARA COMPUTADOR ===== */
+@media (min-width:1024px){
+  /* Fondo: se muestra el grifo completo, sin recortar la cabeza */
+  .page::after{
+    background-size:contain !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    opacity:.30 !important;
+    filter:saturate(.82) brightness(.78) !important;
+  }
+
+  /* Tarjetas más translúcidas para permitir apreciar el grifo de fondo */
+  .card{
+    background:linear-gradient(115deg,rgba(3,31,22,.70),rgba(1,15,10,.64)) !important;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.015), 0 18px 40px rgba(0,0,0,.10);
+    backdrop-filter:blur(1.5px);
+  }
+  .card::before{
+    background:linear-gradient(90deg,rgba(255,255,255,.025),transparent 38%,rgba(0,0,0,.05)) !important;
+  }
+
+  /* Aprovechamiento más uniforme del alto útil de cada widget */
+  .card{min-height:590px !important;}
+  .card-grid{grid-template-rows:230px 1fr !important; gap:4px !important;}
+  .shield-wrap{min-height:220px !important;}
+  .shield{width:min(235px,76%) !important;max-height:235px !important;}
+  .acronym{margin-top:0 !important;}
+
+  /* EGISE: se elimina el vacío visual y se da protagonismo al valor */
+  .egise .card-grid{grid-template-rows:215px 1fr !important;}
+  .egise .shield-wrap{min-height:205px !important;}
+  .egise .shield{width:min(225px,74%) !important;max-height:220px !important;}
+  .egise .desc{margin-top:8px !important;}
+  .egise .metric-title{margin-top:14px !important;}
+  .egise .simple-number{
+    margin-top:8px !important;
+    font-size:clamp(86px,6.2vw,118px) !important;
+    line-height:.95 !important;
+  }
+
+  /* ESPAV: composición simétrica y valores alineados dentro del espacio disponible */
+  .espav .card-grid{grid-template-rows:215px 1fr !important;}
+  .espav .shield-wrap{min-height:205px !important;}
+  .espav .shield{width:min(225px,74%) !important;max-height:220px !important;}
+  .espav .desc{margin-top:8px !important;}
+  .espav .dual{
+    max-width:100% !important;
+    width:100% !important;
+    margin-top:18px !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+  }
+  .espav .dual-item{padding:12px 8px 0 !important;display:flex;flex-direction:column;align-items:center;}
+  .espav .dual-label{min-height:48px;display:flex;align-items:flex-end;justify-content:center;text-align:center;}
+  .espav .dual-value{
+    margin-top:7px !important;
+    font-size:clamp(66px,4.8vw,96px) !important;
+    line-height:.95 !important;
+  }
+}
+
+
+/* ===== AJUSTE DEFINITIVO DE CIFRAS — SOLO COMPUTADOR ===== */
+@media (min-width:1024px){
+  /* El contenido numérico ocupa mejor el alto útil de cada tarjeta */
+  .card-grid > div:last-child{justify-content:flex-start;}
+
+  /* EGISE: cifra principal más grande y más cerca del bloque descriptivo */
+  .egise .card-grid{grid-template-rows:205px 1fr !important;}
+  .egise .shield-wrap{min-height:195px !important;}
+  .egise .acronym{margin-top:-2px !important;}
+  .egise .desc{margin-top:6px !important; margin-bottom:0 !important;}
+  .egise .metric-title{margin-top:18px !important;}
+  .egise .simple-number{
+    margin-top:2px !important;
+    font-size:clamp(108px,8.4vw,150px) !important;
+    line-height:.88 !important;
+    letter-spacing:-3px !important;
+  }
+
+  /* ESPAV: se amplían y elevan ambos indicadores para llenar correctamente la tarjeta */
+  .espav .card-grid{grid-template-rows:205px 1fr !important;}
+  .espav .shield-wrap{min-height:195px !important;}
+  .espav .acronym{margin-top:-2px !important;}
+  .espav .desc{margin-top:6px !important; margin-bottom:4px !important;}
+  .espav .dual{
+    margin-top:12px !important;
+    max-width:100% !important;
+    width:100% !important;
+    align-items:start !important;
+  }
+  .espav .dual-item{
+    padding:10px 4px 0 !important;
+    justify-content:flex-start !important;
+  }
+  .espav .dual-label{
+    min-height:44px !important;
+    font-size:clamp(10px,.92vw,14px) !important;
+    line-height:1.22 !important;
+    align-items:flex-end !important;
+  }
+  .espav .dual-value{
+    margin-top:8px !important;
+    font-size:clamp(82px,6.3vw,120px) !important;
+    line-height:.86 !important;
+    letter-spacing:-2px !important;
+  }
+}
+
+@media (min-width:1500px){
+  .egise .simple-number{font-size:150px !important;}
+  .espav .dual-value{font-size:118px !important;}
+}
+
+
+
+/* =========================================================
+   DISTRIBUCIÓN FINAL PC — SOLO POSICIÓN Y TAMAÑO DE CONTENIDO
+   No modifica imágenes, escudos, logos ni versión móvil.
+   ========================================================= */
+@media (min-width:1024px){
+  /* Se reserva más altura real al bloque de escudo para que el texto
+     nunca quede visualmente pegado o debajo de la imagen. */
+  .card-grid{
+    grid-template-rows:255px 1fr !important;
+    gap:0 !important;
+  }
+  .shield-wrap{min-height:245px !important;}
+
+  /* Todo el bloque textual baja y aprovecha el espacio inferior vacío. */
+  .card-grid > div:last-child{
+    padding-top:12px !important;
+    justify-content:flex-start !important;
+  }
+  .acronym{margin-top:0 !important;}
+
+  /* EICOC: baja el conjunto y distribuye mejor sus cifras. */
+  .eicoc .metric-title{margin-top:26px !important;}
+  .eicoc .fraction{margin-top:14px !important;}
+  .eicoc .divider{margin:18px auto 16px !important;}
+  .eicoc .percent{margin-top:8px !important;}
+
+  /* EGISE: se baja todo el bloque y el 485 ocupa el vacío inferior. */
+  .egise .card-grid{grid-template-rows:255px 1fr !important;}
+  .egise .shield-wrap{min-height:245px !important;}
+  .egise .card-grid > div:last-child{padding-top:12px !important;}
+  .egise .desc{margin-top:12px !important;}
+  .egise .metric-title{margin-top:28px !important;}
+  .egise .simple-number{
+    margin-top:14px !important;
+    font-size:clamp(112px,8.6vw,154px) !important;
+    line-height:.90 !important;
+  }
+
+  /* ESPAV: baja el bloque completo y da más presencia a los dos valores. */
+  .espav .card-grid{grid-template-rows:255px 1fr !important;}
+  .espav .shield-wrap{min-height:245px !important;}
+  .espav .card-grid > div:last-child{padding-top:12px !important;}
+  .espav .desc{margin-top:12px !important;margin-bottom:10px !important;}
+  .espav .dual{
+    margin-top:22px !important;
+    align-items:start !important;
+  }
+  .espav .dual-item{padding-top:12px !important;}
+  .espav .dual-label{min-height:50px !important;}
+  .espav .dual-value{
+    margin-top:12px !important;
+    font-size:clamp(88px,6.8vw,126px) !important;
+    line-height:.88 !important;
+  }
+}
+
+@media (min-width:1500px){
+  .card-grid,.egise .card-grid,.espav .card-grid{grid-template-rows:270px 1fr !important;}
+  .shield-wrap,.egise .shield-wrap,.espav .shield-wrap{min-height:260px !important;}
+  .egise .simple-number{font-size:154px !important;}
+  .espav .dual-value{font-size:126px !important;}
+}
+
+
+/* =========================================================
+   AJUSTE FINAL SOLICITADO — SOLO COMPUTADOR
+   1. Baja las cifras para aprovechar el espacio inferior.
+   2. Recupera un dorado más rico y luminoso.
+   No modifica imágenes, logos, fondos ni versión móvil.
+   ========================================================= */
+@media (min-width:1024px){
+  /* Dorado más profundo, cálido y brillante */
+  :root{
+    --gold:#D9A928;
+    --gold-bright:#F2C85B;
+  }
+  .subtitle,.acronym,.progress-value{
+    color:var(--gold)!important;
+    text-shadow:
+      0 1px 0 rgba(255,244,190,.28),
+      0 0 10px rgba(217,169,40,.18),
+      0 0 22px rgba(217,169,40,.08)!important;
+  }
+  .acronym{
+    color:var(--gold-bright)!important;
+    text-shadow:
+      0 1px 0 rgba(255,247,200,.35),
+      0 0 12px rgba(230,180,55,.22),
+      0 0 28px rgba(217,169,40,.10)!important;
+  }
+
+  /* EGISE: el 485 baja para ocupar el vacío inferior de la tarjeta */
+  .egise .simple-number{
+    margin-top:34px!important;
+    transform:translateY(18px);
+    line-height:.88!important;
+  }
+
+  /* ESPAV: los valores también bajan ligeramente y aprovechan mejor el alto */
+  .espav .dual{
+    margin-top:34px!important;
+    transform:translateY(10px);
+  }
+
+  /* EICOC: descenso sutil de los valores para conservar equilibrio visual */
+  .eicoc .fraction{transform:translateY(6px);}
+  .eicoc .percent{transform:translateY(8px);}
+}
 </style>
 </head>
 <body>
