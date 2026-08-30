@@ -880,9 +880,10 @@ body{
 </main>
 
 <script>
+// Contador anclado a una fecha real: 7 de agosto de 2026, 18:00 (hora de Colombia, UTC-5)
+const startDate = new Date("2026-08-07T18:00:00-05:00").getTime();
 const totalPeriod = 100 * 24 * 60 * 60 * 1000;
-const initialRemaining = (((79 * 24 + 10) * 60 + 11) * 60 + 29) * 1000 + 57;
-const startedAt = Date.now();
+const endDate = startDate + totalPeriod;
 const pad = (n, len=2) => String(Math.max(0, Math.floor(n))).padStart(len, "0");
 
 /* Dígitos digitales construidos por segmentos, inspirados directamente en la referencia suministrada */
@@ -920,8 +921,9 @@ function setDigital(id,value){
   }
 }
 function updateCounter(){
-  const elapsed=Date.now()-startedAt;
-  const remaining=Math.max(0,initialRemaining-elapsed);
+  // Se calcula siempre contra el calendario real, por lo que no se reinicia al recargar.
+  const now=Date.now();
+  const remaining=Math.max(0,endDate-now);
   let rest=remaining;
   const days=Math.floor(rest/86400000); rest%=86400000;
   const hours=Math.floor(rest/3600000); rest%=3600000;
