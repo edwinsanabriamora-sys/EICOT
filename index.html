@@ -805,6 +805,41 @@ body{
   .eicoc .fraction{transform:translateY(6px);}
   .eicoc .percent{transform:translateY(8px);}
 }
+
+
+/***** ACTUALIZACIÓN DE CIFRAS – EGISE *****/
+.egise-breakdown{
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  margin-top:10px;
+}
+.egise-breakdown > div{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-width:110px;
+}
+.egise-mini-label{
+  display:block;
+  font-size:.62em;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:3px;
+}
+.egise-mini-value{
+  display:block;
+  font-size:1.15em;
+  font-weight:500;
+  color:var(--green);
+}
+@media (max-width:700px){
+  .egise-breakdown{gap:18px;margin-top:8px}
+  .egise-breakdown > div{min-width:82px}
+}
+
 </style>
 </head>
 <body>
@@ -852,7 +887,11 @@ body{
           <div class="acronym">EGISE</div>
           <div class="desc">Escudo de Garantía Institucional<br>y Seguridad Estatal</div>
           <div class="metric-title">Contramedidas electrónicas</div>
-          <div class="simple-number">485</div>
+          <div class="simple-number">46</div>
+          <div class="egise-breakdown">
+            <div><span class="egise-mini-label">Estatales</span><span class="egise-mini-value">13</span></div>
+            <div><span class="egise-mini-label">Institucionales</span><span class="egise-mini-value">33</span></div>
+          </div>
         </div>
       </div>
     </article>
@@ -865,12 +904,12 @@ body{
           <div class="desc">Escudo de Seguridad Operacional<br>para la Protección de Activos Vitales</div>
           <div class="dual">
             <div class="dual-item">
-              <div class="dual-label">Evaluación de<br>instalaciones policiales</div>
-              <div class="dual-value">75</div>
+              <div class="dual-label">Estudios de nivel de riesgo<br>personas</div>
+              <div class="dual-value">5</div>
             </div>
             <div class="dual-item">
-              <div class="dual-label">Evaluación de personas<br>en nivel del riesgo</div>
-              <div class="dual-value">146</div>
+              <div class="dual-label">Valoraciones integrales<br>de seguridad física</div>
+              <div class="dual-value">371</div>
             </div>
           </div>
         </div>
