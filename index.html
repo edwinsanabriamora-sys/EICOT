@@ -840,6 +840,55 @@ body{
   .egise-breakdown > div{min-width:82px}
 }
 
+
+/* ===== CORRECCIÓN FINAL DE CIFRAS ===== */
+
+/* EGISE: aprovechar mejor el espacio inferior del widget */
+.egise-breakdown{
+  gap: 42px !important;
+  margin-top: 14px !important;
+}
+.egise-breakdown > div{
+  min-width: 135px !important;
+}
+.egise-mini-label{
+  font-size: .82em !important;
+  letter-spacing: .09em !important;
+  margin-bottom: 7px !important;
+}
+.egise-mini-value{
+  font-size: 1.55em !important;
+  font-weight: 600 !important;
+}
+
+/* El valor principal de EGISE gana protagonismo */
+.egise-breakdown{
+  transform: scale(1.08);
+  transform-origin: center top;
+}
+
+/* ESPAV: asegurar dos líneas compactas y legibles */
+.dual-label{
+  line-height: 1.18 !important;
+}
+
+/* Ajuste exclusivo de escritorio */
+@media (min-width: 701px){
+  .egise-breakdown{
+    gap: 52px !important;
+    margin-top: 18px !important;
+  }
+  .egise-breakdown > div{
+    min-width: 145px !important;
+  }
+  .egise-mini-label{
+    font-size: .9em !important;
+  }
+  .egise-mini-value{
+    font-size: 1.7em !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -875,7 +924,7 @@ body{
           <div class="fraction"><b>2</b>&nbsp; DE &nbsp;<b>8</b></div>
           <div class="divider"></div>
           <div class="metric-label">Porcentaje de operaciones</div>
-          <div class="big-number">25.00%</div>
+          <div class="big-number">25%</div>
         </div>
       </div>
     </article>
@@ -904,7 +953,7 @@ body{
           <div class="desc">Escudo de Seguridad Operacional<br>para la Protección de Activos Vitales</div>
           <div class="dual">
             <div class="dual-item">
-              <div class="dual-label">Estudios de nivel de riesgo<br>personas</div>
+              <div class="dual-label">Estudios de nivel de riesgo<br>– personas</div>
               <div class="dual-value">5</div>
             </div>
             <div class="dual-item">
